@@ -1,7 +1,14 @@
-
 var express = require('express');
 var app     = express();
+app.set('views','./views');
+app.set('view engine','jade');
 
+app.get('/test', function(req, res){
+    res.render('index',{
+        name:'Mazedur Rahman',
+        age : 35
+    });
+})
 app.get('/', function(req,res){
     res.send('Hello Express JS in Bangldesh...');
 });
@@ -9,13 +16,3 @@ app.get('/', function(req,res){
 app.listen(3000, function(){
     console.log('Server is running ....');
 })
-
-/*
-	---- Common Command Lines -----
-	npm init -y
-	npm start
-	nodemon index.js
-	npm install express nodemon // npm install express --save
-	npm uninstall express
-
-*/
