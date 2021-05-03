@@ -10,6 +10,15 @@ function customMiddleware(req, res, next){
     next()
 }
 
+// Tinnylogger Midlleware or multiple middleware
+function tinnyLogger(){
+    return () => {
+        console.log(`${req.method} - ${req.url}`)
+    }
+}
+
+const middleware = [customMiddleware, tinnyLogger()]
+
 app.use(customMiddleware)
 //app.use(morgan('dev'))
 
