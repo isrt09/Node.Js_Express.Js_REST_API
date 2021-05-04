@@ -23,8 +23,21 @@ app.get('/', (req,res)=>{
         {title:'ttile-4', book:'book-4', author:'author-4'},
         {title:'ttile-5', book:'book-5', author:'author-5'},
     ]
-    res.render('index', {title: 'EJS is Template Enginee', post, books})
+    res.render('pages/index', {title: 'EJS is Template Enginee', post, books})
 })
+
+app.get('/about', (req,res)=>{
+    res.render('pages/about', {head:'About'})
+})
+
+app.get('/blog', (req,res)=>{
+    res.render('pages/blog', {head:'Blog'})
+})
+
+app.get('/contact', (req,res)=>{
+    res.render('pages/contact', {head:'Contact'})
+})
+
 app.get('*', (req,res)=>{
     res.send(`<h1>404 - Not Found !!!</h1>`)
 })
