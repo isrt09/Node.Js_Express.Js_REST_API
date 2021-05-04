@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Engine</title>
+</head>
+<body>
+    <h1><%= title %> </h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias nulla aspernatur blanditiis, ratione beatae provident delectus cumque necessitatibus enim at ipsum officia maxime, debitis, autem modi culpa neque pariatur optio.</p>
+    <h3><%= new Date().toString()  %> </h3>
+    <% if(post.publish){ %> 
+        <h2><%= post.name  %> </h2>
+        <h2><%= post.brand  %> </h2>
+    <% }else{ %> 
+        <h1>Post is protected by Administrator </h1>
+    <% } %> 
+    <hr>
+    <h1>Loops in EJS</h1>
+    <ol>
+    <% for (book of books){ %> 
+        <li><%= book.book %> by <%= book.author  %>  </li>
+    <% } %> 
+    </ol>
+</body>
+</html>

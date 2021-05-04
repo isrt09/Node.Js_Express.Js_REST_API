@@ -8,7 +8,23 @@ app.use(morgan('dev'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use('/contacts',contactRoute)
+app.set('view engine','ejs')
 
+app.get('/', (req,res)=>{
+    let post = {
+        name    :'React Js',
+        brand   : 'Jacob Martin',
+        publish : true
+    }
+    let books=[
+        {title:'ttile-1', book:'book-1', author:'author-1'},
+        {title:'ttile-2', book:'book-2', author:'author-2'},
+        {title:'ttile-3', book:'book-3', author:'author-3'},
+        {title:'ttile-4', book:'book-4', author:'author-4'},
+        {title:'ttile-5', book:'book-5', author:'author-5'},
+    ]
+    res.render('index', {title: 'EJS is Template Enginee', post, books})
+})
 app.get('*', (req,res)=>{
     res.send(`<h1>404 - Not Found !!!</h1>`)
 })
