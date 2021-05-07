@@ -4,12 +4,15 @@ const morgan       = require('morgan')
 const mongoose     = require('mongoose')
 const port         = process.env.PORT || 3000
 const contactRoute = require('./contactRoute')
+const router       = require('./routes')
 
 app.use(morgan('dev'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use('/contacts',contactRoute)
 app.set('view engine','ejs')
+
+app.use('/persons', router)
 
 mongoose.connect(`mongodb+srv://monga:mongaxyz@cluster0.rnyas.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,{useNewUrlParser: true, useUnifiedTopology: true})
         .then( ()=> {
@@ -20,13 +23,7 @@ mongoose.connect(`mongodb+srv://monga:mongaxyz@cluster0.rnyas.mongodb.net/myFirs
         .catch(e => {
             console.log(e)
         })
-
-let Schema     = mongoose.Schema
-let testSchema = new Schema({
-    name : String
-})
-let Test      = mongoose.model('Test', testSchema)
-
+        
 app.get('/', (req,res)=>{
     let post = {
         name    :'React Js',
@@ -40,19 +37,7 @@ app.get('/', (req,res)=>{
         {title:'ttile-4', book:'book-4', author:'author-4'},
         {title:'ttile-5', book:'book-5', author:'author-5'},
     ]
-    let test = new Test({
-        name: 'MySQL is SQL Database ...'
-    })
-    test.save()
-        .then(t=>{
-            res.json(t)
-        })
-        .catch(e=>{
-            console.log(e)
-            res.status(500).json({
-                error : 'Error Occured...'
-            })
-        })
+    res.send('<h1>Welcome to Express from Stack Learner in Bangladesh</h1>')
     //res.render('pages/index', {title: 'EJS is Template Enginee', post, books, head:'Home'})
 })
 
