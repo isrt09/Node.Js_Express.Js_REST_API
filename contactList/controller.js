@@ -3,7 +3,8 @@ const Person       = require('./Person')
 exports.allPersons = (req,res)=> {
     Person.find()
           .then(persons=>{
-              res.json(persons)
+              //res.json(persons)
+              res.render('pages/person', {head:'Person'})
           })
           .catch(e=>{
               console.log(e)

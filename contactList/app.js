@@ -41,6 +41,7 @@ app.get('/', (req,res)=>{
     //res.render('pages/index', {title: 'EJS is Template Enginee', post, books, head:'Home'})
 })
 
+
 app.get('/about', (req,res)=>{
     res.render('pages/about', {head:'About'})
 })
